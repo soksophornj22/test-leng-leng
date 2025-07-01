@@ -1,0 +1,649 @@
+<style>
+    body {
+        background-color: #f8f2f6;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+
+    header {
+        background: linear-gradient(90deg, #c7ecee, #2f3542);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 5px solid #2f3542;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 2.5em;
+        margin: 0;
+        animation: text-glow 2s infinite alternate;
+    }
+
+    @keyframes text-glow {
+        0% {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3D8DAE, 0 0 20px #3D8DAE, 0 0 25px #3D8DAE, 0 0 30px #3D8DAE, 0 0 35px #3D8DAE;
+        }
+
+        100% {
+            text-shadow: 0 0 20px #DF8453, 0 0 30px #DF8453, 0 0 40px #DF8453, 0 0 50px #DF8453, 0 0 60px #DF8453, 0 0 70px #DF8453, 0 0 80px #DF8453;
+        }
+    }
+
+    nav {
+        background-color: #2f3542;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #c7ecee;
+    }
+
+    .container {
+        display: grid;
+        place-items: center;
+        text-align: center;
+        height: 20vh;
+    }
+
+    .title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 5.5vw;
+        text-transform: uppercase;
+    }
+
+    .title-word {
+        animation: color-animation 4s linear infinite;
+    }
+
+    .title-word-1 {
+        --color-1: #DF8453;
+        --color-2: #3D8DAE;
+        --color-3: #E4A9A8;
+    }
+
+    .title-word-2 {
+        --color-1: #DBAD4A;
+        --color-2: #ACCFCB;
+        --color-3: #17494D;
+    }
+
+    .title-word-3 {
+        --color-1: #ACCFCB;
+        --color-2: #E4A9A8;
+        --color-3: #ACCFCB;
+    }
+
+    .title-word-4 {
+        --color-1: #3D8DAE;
+        --color-2: #DF8453;
+        --color-3: #E4A9A8;
+    }
+
+    @keyframes color-animation {
+        0% {
+            color: var(--color-1);
+        }
+
+        32% {
+            color: var(--color-1);
+        }
+
+        33% {
+            color: var(--color-2);
+        }
+
+        65% {
+            color: var(--color-2);
+        }
+
+        66% {
+            color: var(--color-3);
+        }
+
+        99% {
+            color: var(--color-3);
+        }
+
+        100% {
+            color: var(--color-1);
+        }
+    }
+
+    .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 20px;
+        padding: 0 20px;
+    }
+
+    .image-gallery img {
+        border: 5px solid #c7ecee;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        height: auto;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .image-gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-item {
+        text-align: center;
+    }
+
+    .image-title {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #2f3542;
+    }
+
+
+    .info-section {
+        text-align: center;
+        margin: 40px 20px;
+
+    }
+
+    .info-section ul {
+        display: inline-block;
+        text-align: left;
+        padding: 0;
+        margin: 20px auto;
+        width: auto;
+        list-style-type: none;
+
+    }
+
+    .info-section ul li {
+        background-color: #c7ecee;
+        color: #2f3542;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .info-section ul li:hover {
+        background-color: #accfcf;
+        transform: translateX(10px);
+    }
+
+    table {
+        width: 80%;
+        margin: 40px auto;
+        border-collapse: collapse;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th,
+    td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #c7ecee;
+        color: #2f3542;
+        font-size: 1.1em;
+    }
+
+    td {
+        background-color: #f8f5f2;
+    }
+
+    tr:hover td {
+        background-color: #dff9fb;
+    }
+
+    blockquote {
+        margin: 20px auto;
+        padding: 15px;
+        background-color: #c7ecee;
+        border-left: 10px solid #2f3542;
+        width: 80%;
+        font-style: italic;
+        color: #2f3542;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 40px 0;
+    }
+
+    .social-buttons a {
+        text-decoration: none;
+    }
+
+    .social-buttons img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .social-buttons img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+        background-color: #2f3542;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 40px;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+        margin: 0;
+    }
+
+    .cart {
+        background-color: #f1f1f1;
+        padding: 20px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .cart-item {
+        margin-bottom: 10px;
+    }
+
+    .add-to-cart {
+        background-color: #3D8DAE;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .add-to-cart:hover {
+        background-color: #DF8453;
+    }
+
+    .cart-icon {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #3D8DAE;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .cart-icon span {
+        font-weight: bold;
+    }
+</style>
+<header>
+    <h1>Welcome to Jewelry-Nicety &#128151;</h1>
+</header>
+
+<nav>
+    <a href="#collections">Collections</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#info">Information</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+    <div class="title">
+        <span class="title-word title-word-1">Our</span>
+        <span class="title-word title-word-2">New</span>
+        <span class="title-word title-word-3">Collections</span>
+
+    </div>
+</div>
+
+<section id="collections" class="info-section">
+    <nav>
+        <a href="#collections">Gold Rings</a>
+        <a href="#gallery">Silver Necklaces</a>
+        <a href="#info">Diamond Earrings</a>
+        <a href="#contact">Platinum Bracelets</a>
+    </nav>
+
+
+</section>
+
+<section id="gallery" class="image-gallery">
+    <div class="image-item">
+        <img src="https://i5.walmartimages.com/asr/f6db327e-1643-4238-a0d6-8ee3a3af5f76.13d69784a6bd2d524bccfb8aab73a14b.jpeg"
+            alt="Gold Ring">
+        <p class="image-title">Gold Ring</p>
+        <button class="add-to-cart" data-item="Gold Ring" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://i.etsystatic.com/5582023/r/il/c95afe/2100643178/il_794xN.2100643178_gnxc.jpg"
+            alt="Silver Necklace">
+        <p class="image-title">Silver Necklace</p>
+        <button class="add-to-cart" data-item="Silver Necklace" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://media.urcouple.com/media/catalog/product/cache/1/image/1000x/9df78eab33525d08d6e5fb8d27136e95/b/r/br191115116-1.jpg"
+            alt="Diamond Earrings">
+        <p class="image-title">Diamond Earrings</p>
+        <button class="add-to-cart" data-item="Diamond Earrings" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://i.etsystatic.com/6657685/r/il/f73ea2/5505462186/il_600x600.5505462186_iou0.jpg"
+            alt="Platinum Bracelet">
+        <p class="image-title">Platinum Bracelet</p>
+
+        <button class="add-to-cart" data-item="Platinum Bracelet" data-price="300">Add to Cart</button>
+    </div>
+   
+    <div class="image-item">
+        <img src="https://i5.walmartimages.com/asr/f6db327e-1643-4238-a0d6-8ee3a3af5f76.13d69784a6bd2d524bccfb8aab73a14b.jpeg"
+            alt="Gold Ring">
+        <p class="image-title">Gold Ring</p>
+        <button class="add-to-cart" data-item="Gold Ring" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://i.etsystatic.com/5582023/r/il/c95afe/2100643178/il_794xN.2100643178_gnxc.jpg"
+            alt="Silver Necklace">
+        <p class="image-title">Silver Necklace</p>
+        <button class="add-to-cart" data-item="Silver Necklace" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://media.urcouple.com/media/catalog/product/cache/1/image/1000x/9df78eab33525d08d6e5fb8d27136e95/b/r/br191115116-1.jpg"
+            alt="Diamond Earrings">
+        <p class="image-title">Diamond Earrings</p>
+        <button class="add-to-cart" data-item="Diamond Earrings" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://i.etsystatic.com/6657685/r/il/f73ea2/5505462186/il_600x600.5505462186_iou0.jpg"
+            alt="Platinum Bracelet">
+        <p class="image-title">Platinum Bracelet</p>
+        <button class="add-to-cart" data-item="Platinum Bracelet" data-price="300">Add to Cart</button>
+    </div>
+   
+    <div class="image-item">
+        <img src="https://i5.walmartimages.com/asr/f6db327e-1643-4238-a0d6-8ee3a3af5f76.13d69784a6bd2d524bccfb8aab73a14b.jpeg"
+            alt="Gold Ring">
+        <p class="image-title">Gold Ring</p>
+        <button class="add-to-cart" data-item="Gold Ring" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://i.etsystatic.com/5582023/r/il/c95afe/2100643178/il_794xN.2100643178_gnxc.jpg"
+            alt="Silver Necklace">
+        <p class="image-title">Silver Necklace</p>
+        <button class="add-to-cart" data-item="Silver Necklace" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://media.urcouple.com/media/catalog/product/cache/1/image/1000x/9df78eab33525d08d6e5fb8d27136e95/b/r/br191115116-1.jpg"
+            alt="Diamond Earrings">
+        <p class="image-title">Diamond Earrings</p>
+        <button class="add-to-cart" data-item="Diamond Earrings" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://i.etsystatic.com/6657685/r/il/f73ea2/5505462186/il_600x600.5505462186_iou0.jpg"
+            alt="Platinum Bracelet">
+        <p class="image-title">Platinum Bracelet</p>
+        <button class="add-to-cart" data-item="Platinum Bracelet" data-price="300">Add to Cart</button>
+    </div>
+   
+    <div class="image-item">
+        <img src="https://i5.walmartimages.com/asr/f6db327e-1643-4238-a0d6-8ee3a3af5f76.13d69784a6bd2d524bccfb8aab73a14b.jpeg"
+            alt="Gold Ring">
+        <p class="image-title">Gold Ring</p>
+        <button class="add-to-cart" data-item="Gold Ring" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://i.etsystatic.com/5582023/r/il/c95afe/2100643178/il_794xN.2100643178_gnxc.jpg"
+            alt="Silver Necklace">
+        <p class="image-title">Silver Necklace</p>
+        <button class="add-to-cart" data-item="Silver Necklace" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://media.urcouple.com/media/catalog/product/cache/1/image/1000x/9df78eab33525d08d6e5fb8d27136e95/b/r/br191115116-1.jpg"
+            alt="Diamond Earrings">
+        <p class="image-title">Diamond Earrings</p>
+        <button class="add-to-cart" data-item="Diamond Earrings" data-price="300">Add to Cart</button>
+    </div>
+    <div class="image-item">
+        <img src="https://i.etsystatic.com/6657685/r/il/f73ea2/5505462186/il_600x600.5505462186_iou0.jpg"
+            alt="Platinum Bracelet">
+        <p class="image-title">Platinum Bracelet</p>
+        <button class="add-to-cart" data-item="Platinum Bracelet" data-price="300">Add to Cart</button>
+    </div>
+    
+</section>
+
+
+<section id="info" class="info-section">
+    <h2>More Information</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="p1">1</td>
+                <td>18k gold with a radiant finish</td>
+                <td>$350</td>
+            </tr>
+            <tr>
+                <td id="p2">2</td>
+                <td>Sterling silver with a delicate design</td>
+                <td>$150</td>
+            </tr>
+            <tr>
+                <td id="p3">3</td>
+                <td>Brilliant cut diamonds, 1 carat each</td>
+                <td>$1200</td>
+            </tr>
+            <tr>
+                <td id="p4">4</td>
+                <td>High-polish platinum with a secure clasp</td>
+                <td>$800</td>
+            </tr>
+            <tr>
+                <td id="p5">5</td>
+                <td>Cultured pearl with a platinum chain</td>
+                <td>$400</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="quote" class="info-section">
+    <blockquote>
+        "Elegance is not about being noticed, it's about being remembered." - Giorgio Armani
+    </blockquote>
+</section>
+
+<section id="contact" class="social-buttons">
+    <a href="https://www.instagram.com/yourprofile" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    </a>
+    <a href="https://www.facebook.com/yourprofile" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+            alt="Facebook">
+    </a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+    </a>
+    <a href="https://www.telegram.com/in/yourprofile" target="_blank">
+        <img src="https://th.bing.com/th/id/R.5e72a66a83f955e814d5a025ff3e04ff?rik=iWA0ZIpYl7%2fs2w&pid=ImgRaw&r=0"
+            alt="Telegram">
+
+    </a>
+</section>
+<!-- Cart Section -->
+<div class="cart">
+    <h2>Shopping Cart</h2>
+    <div id="cart-items">
+        <p>No item in cart</p>
+    </div>
+    <p>Total: $<span id="cart-total"></span></p>
+</div>
+
+<div class="cart-icon">
+    <span id="cart-count">0</span> 🛒
+</div>
+
+<footer>
+    <p>&copy; <span id="year"></span> Jewelry-Nicety Collection. All rights reserved.</p>
+</footer>
+
+
+<script>
+
+
+
+    // JavaScript to handle Add to Cart functionality
+    let cart = [];
+    let cartTotal = 0;
+    let product = {
+        "Gold Ring": 350,
+        "Silver Necklace": 150,
+        "Diamond Rings": 1200,
+        "Platinum Bracelet": 800,
+        "Pearl Pendant": 400
+    }
+    let productKeys = Object.keys(product);
+
+
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalElement = document.getElementById('cart-total');
+    const cartCountElement = document.getElementById('cart-count');
+
+    document.getElementById("p1").innerText = productKeys[0];
+    document.getElementById("p2").innerText = productKeys[1];
+    document.getElementById("p3").innerText = productKeys[2];
+    document.getElementById("p4").innerText = productKeys[3];
+    document.getElementById("p5").innerText = productKeys[4];
+
+    const d = new Date()
+    document.getElementById("year").innerHTML = d.getFullYear();
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const item = this.getAttribute('data-item');
+            const price = parseInt(this.getAttribute('data-price'));
+
+            cart.push({ item, price });
+            cartTotal += price;
+
+            updateCart();
+        });
+    });
+
+    function updateCart() {
+        // Update the cart display
+        cartItemsContainer.innerHTML = '';
+        const itemCount = {}; // Object to keep track of item quantities
+
+        // Calculate total and count quantities
+        cart.forEach(cartItem => {
+            if (itemCount[cartItem.item]) {
+                itemCount[cartItem.item].quantity += 1; // Increase quantity
+            } else {
+                itemCount[cartItem.item] = {
+                    price: cartItem.price,
+                    quantity: 1
+                };
+            }
+        });
+
+        // Create cart items display
+        for (const item in itemCount) {
+            const cartItemElement = document.createElement('div');
+            cartItemElement.classList.add('cart-item');
+            cartItemElement.innerHTML = `<p>${item} - $${itemCount[item].price} x ${itemCount[item].quantity}</p>`;
+            cartItemsContainer.appendChild(cartItemElement);
+        }
+
+        // Calculate total
+        const cartTotal = Object.entries(itemCount).reduce((total, [item, details]) => {
+            return Math.round(total + (details.price * details.quantity));
+        }, 0);
+
+        // Update total
+        cartTotalElement.textContent = cartTotal;
+
+        // Update cart count
+        cartCountElement.textContent = cart.length;
+
+        // Display a message if the cart is empty
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>No items in the cart.</p>';
+        }
+    }
+
+
+    const items = [
+        {
+            name: "Gold Ring",
+            price: 300,
+            imgSrc: "https://i5.walmartimages.com/asr/f6db327e-1643-4238-a0d6-8ee3a3af5f76.13d69784a6bd2d524bccfb8aab73a14b.jpeg"
+        },
+        {
+            name: "Silver Necklace",
+            price: 300,
+            imgSrc: "https://i.etsystatic.com/5582023/r/il/c95afe/2100643178/il_794xN.2100643178_gnxc.jpg"
+        },
+        {
+            name: "Diamond Earrings",
+            price: 300,
+            imgSrc: "https://media.urcouple.com/media/catalog/product/cache/1/image/1000x/9df78eab33525d08d6e5fb8d27136e95/b/r/br191115116-1.jpg"
+        },
+        {
+            name: "Platinum Bracelet",
+            price: 300,
+            imgSrc: "https://i.etsystatic.com/6657685/r/il/f73ea2/5505462186/il_600x600.5505462186_iou0.jpg"
+        },
+        {
+            name: "Pearl Pendant",
+            price: 300,
+            imgSrc: "https://th.bing.com/th/id/OIP._kQiLzxUwV5ysJNGRybVJAHaHa?w=1200&h=1200&rs=1&pid=ImgDetMain"
+        }
+    ];
+
+    function generateGallery() {
+        const gallery = document.getElementById('gallery');
+        items.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'image-item';
+            itemDiv.innerHTML = `
+                <img src="${item.imgSrc}" alt="${item.name}">
+                <p class="image-title">${item.name}</p>
+                <button class="add-to-cart" data-item="${item.name}" data-price="${item.price}">Add to Cart</button>
+            `;
+            gallery.appendChild(itemDiv);
+        });
+    }
+
+
+</script>
